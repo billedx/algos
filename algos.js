@@ -11,7 +11,6 @@ function makeArray(n)
     return numbers
 }
 
-// Insertion sort
 function insertionSort(numbers)
 {
   for (var i = 1; i < numbers.length; i++)
@@ -28,10 +27,29 @@ function insertionSort(numbers)
   return numbers
 }
 
+function selectionSort(numbers)
+{
+    for (var i = 0; i < numbers.length - 1; i++)
+    {
+        var min = i
+        for (var j = i + 1; j < numbers.length; j++)
+        {
+            if (numbers[j] < numbers[min])
+            {
+                min = j
+            }
+        }
+        var temp = numbers[i]
+        numbers[i] = numbers[min]
+        numbers[min] = temp
+    }
+    return numbers
+}
+
 var numbers = makeArray(30)
 
-var sorted = insertionSort(numbers)
-for (i = 0; i < sorted.length; i++)
+var sorted2 = selectionSort(numbers)
+for (i = 0; i < sorted2.length; i++)
 {
-    console.log(sorted[i])
+    console.log(sorted2[i])
 }
