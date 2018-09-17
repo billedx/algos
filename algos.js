@@ -11,23 +11,24 @@ function makeArray(n)
     return numbers
 }
 
-var numbers = makeArray(30)
-
 // Insertion sort
 function insertionSort(numbers)
 {
-    for (i = 1; i < numbers.length; i++)
+  for (var i = 1; i < numbers.length; i++)
+  {
+    var j = i;
+    while (numbers[j] < numbers[j-1] && j > 0)
     {
-        var value = numbers[i]
-        for (var j = i - 1; j > -1 && numbers[j] > value; j--)
-        {
-            numbers[j + 1] = numbers[j]
-        }
-        numbers[j + 1] = value
+      var temp = numbers[j]
+      numbers[j] = numbers[j-1]
+      numbers[j-1] = temp
+      j -= 1
     }
-    
-    return numbers
+  }
+  return numbers
 }
+
+var numbers = makeArray(30)
 
 var sorted = insertionSort(numbers)
 for (i = 0; i < sorted.length; i++)
